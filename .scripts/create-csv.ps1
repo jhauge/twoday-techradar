@@ -2,4 +2,4 @@ $trJson = Invoke-WebRequest "https://tnhwf0jo.api.sanity.io/v2022-03-07/data/que
 echo $trJson
 $trJsonResult = ($trJson.Content | ConvertFrom-Json).result
 echo $trJsonResult
-$trJsonResult | Select-Object name, ring, quadrant, isNew, status, description | Export-Csv -Path ..\data\tech-radar.csv -UseQuotes AsNeeded
+$trJsonResult | Select-Object name, ring, quadrant, isNew, status, description | Export-Csv -Path ..\data\tech-radar.csv -UseQuotes Always
