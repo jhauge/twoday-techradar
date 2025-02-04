@@ -1,0 +1,22 @@
+meta {
+  name: TW View
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://tnhwf0jo.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%27TechType%27%5D+%7C+order%28quadrant%29+%0A%7B%0A++name%2C+%0A++quadrant%2C+%0A++ring%2C+%0A++isNew%2C%0A++%22description%22%3A+%22%3Cp%3E%3Cstrong%3E%3Ca+href%3D%27%22+%2B+url+%2B+%22%27%3E%22+%2B+name+%2B+%22%3C%2Fa%3E%3C%2Fstrong%3E%22+%2B+description+%2B+%22%3C%2Fp%3E%22%0A%7D
+  body: none
+  auth: none
+}
+
+params:query {
+  query: *[_type == 'TechType'] | order(quadrant) 
+  {
+    name, 
+    quadrant, 
+    ring, 
+    isNew,
+    "description": "<p><strong><a href='" + url + "'>" + name + "</a></strong>" + description + "</p>"
+  }
+}
