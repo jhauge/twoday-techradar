@@ -1,8 +1,11 @@
 import {defineCliConfig} from 'sanity/cli'
 
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID
+if (!projectId) { throw new Error('The project ID is required') }
+
 export default defineCliConfig({
   api: {
-    projectId: 'tnhwf0jo',
+    projectId,
     dataset: 'production'
   },
   /**
