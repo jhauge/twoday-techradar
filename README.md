@@ -10,7 +10,21 @@ This project enables teams to:
 - Export data in CSV format for ThoughtWorks Radar visualization
 - Maintain historical technology adoption data
 
-## Getting Started
+## Prerequisites
+
+1. Create a [Sanity account](https://www.sanity.io/login/sign-up)
+2. Create a new Sanity project:
+   - Go to [sanity.io/manage](https://www.sanity.io/manage)
+   - Click the "New" button in the top and select "Project"
+   - Finish project setup wizard
+   - Note down your project ID
+
+3. Create `.env.local` in the project root with the following content
+```bash
+SANITY_STUDIO_PROJECT_ID=your-project-id-here
+```
+
+## Run the setup locally
 
 ```ps
 # Install dependencies
@@ -18,13 +32,23 @@ npm install
 
 # Start the Sanity Studio development server
 npm run dev
-
-# Generate the CSV file
-cd .scripts
-./create-csv.ps1
 ```
 
-The generated CSV file will be available at [tech-radar.csv](data/tech-radar.csv).
+Now open Sanity Studio on your local server, and add your first Tech Type for the radar by clicking "Create -> Tech Type" in the top of the interface. Fill in the form with tech-type data, and repeat as needed.
+
+To present the data you need to create the csv-data file for the ThoughtWorks radar:
+
+```ps
+# Powershell command at the root of the project
+cd .scripts
+. .\create-csv.ps1
+```
+
+This will create or overwrite the csv fil in the data directory - you can display your radar by commiting the file to your github repo push the project to a public repo, and then append the url for the raw csv to this url:
+
+`https://radar.thoughtworks.com/?documentId=<your-datafile-url-here>`
+
+## Creating 
 
 ## Project Structure
 

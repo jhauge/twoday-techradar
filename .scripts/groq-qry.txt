@@ -1,0 +1,8 @@
+*[_type == "TechType"] | order(quadrant) {
+    name,
+    quadrant,
+    ring,
+    isNew,
+    status,
+    "description": array::join(['<p><strong><a href=''',coalesce(url, "#"),'''>'',name,'</a></strong> ',description,'</p>'], "")
+}
