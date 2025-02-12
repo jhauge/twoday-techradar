@@ -26,7 +26,7 @@ SANITY_STUDIO_PROJECT_ID=your-project-id-here
 
 ## Run the setup locally
 
-```ps
+```bash
 # Install dependencies
 npm install
 
@@ -38,13 +38,12 @@ Now open Sanity Studio on your local server, and add your first Tech Type for th
 
 To present the data you need to create the csv-data file for the ThoughtWorks radar:
 
-```ps
+```bash
 # Powershell command at the root of the project
-cd .scripts
-. .\create-csv.ps1
+npm run csvgeneration
 ```
 
-This will create or overwrite the csv fil in the data directory - you can display your radar by commiting the file to your github repo push the project to a public repo, and then append the url for the raw csv to this url:
+This will create or overwrite the csv file in the data directory - you can display your radar by commiting the file to your github repo push the project to a public repo, and then append the url for the raw csv to this url:
 
 `https://radar.thoughtworks.com/?documentId=<your-datafile-url-here>`
 

@@ -19,14 +19,12 @@ async function main() {
     const query = groq`*[_type == 'TechType'] | order(quadrant) { name, quadrant, ring, isNew, status, "description": array::join(["<p><strong><a href='",coalesce(url, '#'),"'>",name,"</a></strong> ",description,"</p>"], "")}`
     const client = createClient(clientConfig)
     const data = await client.fetch(query)
-    console.log(data)
-
     const headers = ['name', 'ring', 'quadrant', 'isNew', 'status', 'description']
     const csvContent = [
         // Headers
         headers.join(','),
         // Data rows
-        ...data.map(item => 
+        ...data.map((item: { [x: string]: any }) => 
             headers.map(header => 
                 JSON.stringify(item[header] || '')
             ).join(',')
@@ -37,7 +35,7 @@ async function main() {
         resolve(__dirname, '../data/techradar.csv'),
         csvContent
     )
-    console.log('Data written to data/techradar.csv')
+    console.log('Data written to ../data/techradar.csv')
 }
 
 main().catch(console.error) 
