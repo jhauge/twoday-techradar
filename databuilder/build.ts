@@ -16,7 +16,7 @@ const clientConfig: ClientConfig = {
 }
 
 async function main() {
-    const query = groq`*[_type == 'TechType'] | order(quadrant) { name, quadrant, ring, isNew, status, "description": array::join(['<p><strong><a href="',coalesce(url, '#'),'">',name,'</a></strong> ',description,'</p>'], '')}`
+    const query = groq`*[_type == 'TechType'] | order(quadrant) { name, quadrant, ring, isNew, status, "description": array::join(["<p><strong><a href='",coalesce(url, '#'),"'>",name,"</a></strong> ",description,"</p>"], "")}`
     const client = createClient(clientConfig)
     const data = await client.fetch(query)
     console.log(data)
