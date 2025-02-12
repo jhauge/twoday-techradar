@@ -21,11 +21,23 @@ async function main() {
     const data = await client.fetch(query)
     console.log(data)
 
+    const headers = ['name', 'ring', 'quadrant', 'isNew', 'status', 'description']
+    const csvContent = [
+        // Headers
+        headers.join(','),
+        // Data rows
+        ...data.map(item => 
+            headers.map(header => 
+                JSON.stringify(item[header] || '')
+            ).join(',')
+        )
+    ].join('\n')
+
     writeFileSync(
-        resolve(__dirname, '../data/techradar.json'),
-        JSON.stringify(data, null, 2)
+        resolve(__dirname, '../data/techradar.csv'),
+        csvContent
     )
-    console.log('Data written to data/techradar.json')
+    console.log('Data written to data/techradar.csv')
 }
 
 main().catch(console.error) 
